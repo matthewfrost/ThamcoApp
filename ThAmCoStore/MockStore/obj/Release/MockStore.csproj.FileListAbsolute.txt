@@ -1,0 +1,5 @@
+E:\SoftwareArchitecture\ThAmCoStore\MockStore\bin\Release\MockStore.dll
+E:\SoftwareArchitecture\ThAmCoStore\MockStore\bin\Release\MockStore.pdb
+E:\SoftwareArchitecture\ThAmCoStore\MockStore\obj\Release\MockStore.csprojResolveAssemblyReference.cache
+E:\SoftwareArchitecture\ThAmCoStore\MockStore\obj\Release\MockStore.dll
+E:\SoftwareArchitecture\ThAmCoStore\MockStore\obj\Release\MockStore.pdb

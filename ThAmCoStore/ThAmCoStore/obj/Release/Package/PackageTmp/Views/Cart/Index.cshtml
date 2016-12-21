@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Cart</h2>
+<!--ko foreach: Items()-->
+<div class="row">
+    <span class="col-xs-4" data-bind="text: $data.ItemName()"></span>
+    <span class="col-xs-2" data-bind="text: $data.ItemPrice()"></span>
+    <span class="material-icons" style="cursor: pointer" data-bind="click: $root.removeItem" >delete</span>
+</div>
+<!--/ko-->
+<!--ko if: Items().length > 0-->
+<div class="row">
+    <div class="col-xs-2">
+        <button class="buy">Buy</button>
+    </div>
+</div>
+<!--/ko-->
+<!--ko if: Items().length == 0-->
+<h2 style="color: #A8A8A8">Nothing here...</h2>
+<!--/ko-->

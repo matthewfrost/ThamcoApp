@@ -1,0 +1,7 @@
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\obj\Debug\DTOs.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\bin\Debug\DTOs.dll
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\bin\Debug\DTOs.pdb
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\obj\Debug\DTOs.dll
+C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\DTOs\obj\Debug\DTOs.pdb

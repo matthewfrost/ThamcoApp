@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "CreateBox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateBox</h2>
+<div class="row">
+    <span class="col-xs-1 heading">Name: </span>
+    <input id="boxName" class="col-xs-4" type="text"/>
+    <div class="col-xs-2"></div>
+    <span class="col-xs-1 heading">Price:</span>
+    <input id="boxPrice" class="col-xs-4" type="number" />
+</div>
+<div class="row">
+    <span class="heading col-xs-1">Description:</span>
+</div>
+<div class="row">
+    <textarea id="boxDescription" cols="500" rows="2" class="col-xs-12"></textarea>
+</div>
+<div class="row">
+    
+</div>
+<h3>Items</h3>
+<div id="loader">
+    <img src="~/loader.gif" />
+</div>
+<div id="items" class="hidden">
+    <select data-bind="options: Items, optionsText: 'Name', optionsValue= ID, optionsCaption: 'Select Item...', value: $root.SelectedItem"></select>
+    <div data-bind="css: {hidden: $root.SelectedItem() == null,  detailContainer: $root.SelectedItem() != null}">
+        <!--ko if: $root.SelectedItem() != null-->
+        <div class="row">
+            <p class="col-xs-1 heading">Name: </p>
+            <p class="col-xs-4" data-bind="text: $root.SelectedItem().Name()"></p>
+        </div>
+        <div class="row">
+            <p class="col-xs-1 heading">Description: </p>
+            <p class="col-xs-4" data-bind="text: $root.SelectedItem().Description()"></p>
+        </div>
+        <div class="row">
+            <p class="col-xs-1 heading">Brand: </p>
+            <p class="col-xs-4" data-bind="text: $root.SelectedItem().Brand()"></p>
+        </div>
+        <div class="row">
+            <p class="col-xs-1 heading">Category: </p>
+            <p class="col-xs-4" data-bind="text: $root.SelectedItem().Category()"></p>
+        </div>
+        <div class="row">
+            <p class="col-xs-1 heading">Price: </p>
+            <p class="col-xs-4" data-bind="text: $root.SelectedItem().Price()"></p>
+        </div>
+        <div class="row">
+            <div class="col-xs-11"></div>
+            <button data-bind="click: $root.addItem" class="buy col-xs-1">Add</button>
+        </div>
+        <!--/ko-->
+    </div>
+</div>
+<h2>Box Contents</h2>
+<div>
+    <!--ko foreach: $root.SelectedItems()-->
+    <div class="row">
+        <span class="col-xs-5" data-bind="text: $data.Name()"></span>
+        <span class="col-xs-1 material-icons" style="cursor: pointer" data-bind="click: $root.removeItem">delete</span>
+    </div>
+    <!--/ko-->
+</div>
+<button class="buy" data-bind="css: {hidden: $root.SelectedItems().length == 0}, click: $root.saveBox">Create Box</button>
+

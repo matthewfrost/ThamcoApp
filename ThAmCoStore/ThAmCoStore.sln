@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThAmCoStore", "ThAmCoStore\ThAmCoStore.csproj", "{942B2C0D-F7DA-4684-9095-3976DF618125}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{67E86460-28C2-45D9-95F0-BBEC9C25BEA6}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureVMPublishModule.psm1 = PublishScripts\AzureVMPublishModule.psm1
+		PublishScripts\Publish-WebApplicationVM.ps1 = PublishScripts\Publish-WebApplicationVM.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{6DC863FB-4168-4B76-B1D0-857B542043B5}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\ThAmCoStore-WAWS-dev.json = PublishScripts\Configurations\ThAmCoStore-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockStore", "MockStore\MockStore.csproj", "{79FFA6FB-2EF4-4792-832D-9FB949DCA230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDataSources", "IDataSources\IDataSources.csproj", "{C2624C76-C178-495C-A7F7-9B97CD068DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{6ADB5DA1-7950-4DE0-AB65-DC0D8F6C6961}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{942B2C0D-F7DA-4684-9095-3976DF618125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{942B2C0D-F7DA-4684-9095-3976DF618125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{942B2C0D-F7DA-4684-9095-3976DF618125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{942B2C0D-F7DA-4684-9095-3976DF618125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79FFA6FB-2EF4-4792-832D-9FB949DCA230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79FFA6FB-2EF4-4792-832D-9FB949DCA230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79FFA6FB-2EF4-4792-832D-9FB949DCA230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79FFA6FB-2EF4-4792-832D-9FB949DCA230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2624C76-C178-495C-A7F7-9B97CD068DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2624C76-C178-495C-A7F7-9B97CD068DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2624C76-C178-495C-A7F7-9B97CD068DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2624C76-C178-495C-A7F7-9B97CD068DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ADB5DA1-7950-4DE0-AB65-DC0D8F6C6961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ADB5DA1-7950-4DE0-AB65-DC0D8F6C6961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ADB5DA1-7950-4DE0-AB65-DC0D8F6C6961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ADB5DA1-7950-4DE0-AB65-DC0D8F6C6961}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6DC863FB-4168-4B76-B1D0-857B542043B5} = {67E86460-28C2-45D9-95F0-BBEC9C25BEA6}
+	EndGlobalSection
+EndGlobal

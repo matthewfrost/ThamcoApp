@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--ko if: $root.SelectedBox().Available-->
+@if (System.Web.HttpContext.Current.User.Identity.Name.Length > 0)
+{
+<div class="row margin-top15">
+    <div class="col-xs-11"></div>
+    <button data-bind="click: AddToCart" class="col-xs-1 buy">Buy</button>
+</div>
+}
+else
+{
+    //"Log in to buy" button
+}
+<!--/ko-->
+<!--ko if: !$root.SelectedBox().Available()-->
+    <div class="row margin-top15">
+    <div class="col-xs-11"></div>
+    <button class="col-xs-1">Not Available`</button>
+</div>
+<!--/ko-->
+
+<!--ko if: $root.LoggedIn()-->
+    <div style="margin-top: 5px;" class="row">
+    <!--ko if: !EditMode()-->
+        <div class="col-xs-11"></div>
+        <button data-bind="click: toggleEdit" class="col-xs-1">Edit</button>
+    <!--/ko-->
+    <!--ko if: EditMode()-->
+        <div class="col-xs-4">
+            <label for="visible">Visible</label>
+            <input data-bind="checked: $root.SelectedBox().Visible" id="visible" type="checkbox"/>
+        </div>
+        <div class="col-xs-4"></div>
+        <div class="col-xs-2"></div>
+        <button data-bind="click: postChanges($root.postSuccess)" class="col-xs-1 buy">Save Changes</button>
+        <button data-bind="click: toggleEdit" class="col-xs-1">Edit</button>
+    <!--/ko-->
+</div>
+<!--/ko-->
+<div class="row">
+    <p class="col-xs-2 heading">Name</p>
+    <div class="col-xs-2">
+        <span id="Name" data-bind="text: $root.SelectedBox().Name()" />
+    </div>
+</div>
+<div class="row">
+    <p class="col-xs-2 heading">Description</p>
+    <div class="col-xs-2">
+        <span data-bind="text: $root.SelectedBox().Description()"></span>
+    </div>
+</div>
+<div class="row">
+    <p class="col-xs-2 heading">Price</p>
+    <div class="col-xs-2">
+        <input data-bind="value: $root.SelectedBox().Price(), textInput: $root.SelectedBox().Price, enable: $root.EditMode()" />
+    </div>
+</div>
+<table>
+    <tr>
+        <th>Item</th>
+        <th>Description</th>
+    </tr>
+    <!--ko foreach: $root.Products()-->
+    <tr>
+        <td data-bind="text: $data.Name()"></td>
+        <td data-bind="text: $data.Description()"></td>
+    </tr>
+    <!--/ko-->
+</table>
+

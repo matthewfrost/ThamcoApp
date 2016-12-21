@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    
+}
+
+<table class="table-responsive" data-bind="foreach: Boxes">
+    <tr>
+        <td data-bind="text: $data.Name"></td>
+        <td data-bind="text: $data.Description"></td>
+        <td data-bind="text: $data.Price"></td>
+        <td data-bind="click: $root.boxDetails"><button>Details</button></td>
+    </tr>
+</table>
+
+
+
+

@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Cart</h2>
+
+<!--ko if: Items() != null-->
+<table>
+    <tr class="row">
+        <th class="col-xs-3">Name</th>
+        <th class="col-xs-3">Price</th>
+        <th class="col-xs-2"></th>
+    </tr>
+    <tr class="row">
+        <td class="col-xs-3"><span data-bind="text: Items().ItemName()"></span></td>
+        <td class="col-xs-3"><span data-bind="text: Items().ItemPrice()"></span></td>
+        <td class="col-xs-2"><span style="cursor: pointer" class="material-icons" data-bind="click: $root.removeItem">delete</span></td>
+    </tr>
+</table>
+<div class="row">
+    <label for="wrapping" class="col-xs-1">Wrapping</label>
+    <select data-bind="options: Wrappings, optionsText: 'TypeName', optionsValue= Price, value: $root.WrappingCost"></select>
+</div>
+
+<div class="row">
+    <span class="col-xs-1">Recipient</span>
+    <div class="col-xs-3">
+        <input />
+    </div>
+</div>
+<div class="row">
+    <span class="col-xs-1">Message</span>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <textarea style="width: 100%"></textarea>
+    </div>
+</div>
+<div class="row">
+    <span class="col-xs-2">Total Price (£)</span>
+    <span data-bind="text: TotalCost"></span>
+</div>
+<div class="row">
+    <div class="col-xs-2">
+        <button data-bind="click: $root.Purchase" class="buy">Buy</button>
+    </div>
+</div>
+<!--/ko-->
+<!--ko if: Items() == null-->
+<h2 style="color: #A8A8A8">Nothing here...</h2>
+<!--/ko-->
