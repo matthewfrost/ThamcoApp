@@ -5,3 +5,10 @@ C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\IDataSources\bin\Deb
 C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\IDataSources\obj\Debug\IDataSources.csprojResolveAssemblyReference.cache
 C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\IDataSources\obj\Debug\IDataSources.dll
 C:\Users\Matthew\Documents\SoftwareArchitecture\ThAmCoStore\IDataSources\obj\Debug\IDataSources.pdb
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\bin\Debug\IDataSources.dll
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\bin\Debug\IDataSources.pdb
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\bin\Debug\DTOs.dll
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\bin\Debug\DTOs.pdb
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\obj\Debug\IDataSources.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\obj\Debug\IDataSources.dll
+C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\IDataSources\obj\Debug\IDataSources.pdb

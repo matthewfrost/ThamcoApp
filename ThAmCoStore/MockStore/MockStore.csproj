@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Db.cs" />
+    <Compile Include="OrderSource.cs" />
     <Compile Include="ProductSource.cs" />
     <Compile Include="SelectionBoxSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

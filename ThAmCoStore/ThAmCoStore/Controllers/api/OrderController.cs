@@ -4,11 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using DTOs;
+using MockStore;
+using IDataSources;
 namespace ThAmCoStore.Controllers.api
 {
     public class OrderController : ApiController
     {
+        IOrderSource source;
         // GET: api/Order
         public IEnumerable<string> Get()
         {
@@ -22,8 +25,14 @@ namespace ThAmCoStore.Controllers.api
         }
 
         // POST: api/Order
-        public void Post([FromBody]string value)
+        public bool Post([FromBody]Order order)
         {
+           return source.submitOrder(order);
+        }
+
+        public bool Post([FromBody] List<Order> orders)
+        {
+            return source.submitOrder(orders);
         }
 
         // PUT: api/Order/5

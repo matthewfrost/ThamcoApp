@@ -18,11 +18,8 @@
                 var index, cookieObj, user, removedItem;
 
                 user = $('#user').text();
-                index = self.Items().indexOf(item);
-                cookieObj = JSON.parse(Cookies.get(user));
-                removedItem = cookieObj.splice(index, 1);
-                Cookies.set(user, cookieObj);
-                self.Items(null)
+                Cookies.remove(user);
+                self.Items(null);
             }
 
             self.Purchase = function () {
