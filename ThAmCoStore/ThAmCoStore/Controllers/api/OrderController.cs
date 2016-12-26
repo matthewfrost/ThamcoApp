@@ -12,9 +12,15 @@ namespace ThAmCoStore.Controllers.api
     public class OrderController : ApiController
     {
         IDodgyDealersOrders DodgyDealers;
-        IKhansKwikimartOrders KhansKwikimart;
         IUndercutersOrders Undercutters;
         IBazzasBazaarOrders BazzasBazaar;
+
+        public OrderController(IDodgyDealersOrders dodgyDealers, IUndercutersOrders undercutters, IBazzasBazaarOrders bazzasBazaar)
+        {
+            this.DodgyDealers = dodgyDealers;
+            this.Undercutters = undercutters;
+            this.BazzasBazaar = bazzasBazaar;
+        }
 
         // GET: api/Order
         public IEnumerable<string> Get()
@@ -51,10 +57,11 @@ namespace ThAmCoStore.Controllers.api
 
         public bool Put([FromBody] List<Order> orders)
         {
+            //Doesnt really work, will set result to last order
             bool result = false;
             foreach(Order o in orders)
             {
-                switch (o.supplier.ToLower())
+                switch (o.Supplier.ToLower())
                 {
                     case "undercutters":
                         result = Undercutters.submitOrder(o);

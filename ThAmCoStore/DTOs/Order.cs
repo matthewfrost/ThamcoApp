@@ -18,7 +18,7 @@ namespace DTOs
         public string ProductEan { get; set; }
         public decimal TotalPrice { get; set; }
 
-        public string supplier { get; set; }
+        public string Supplier { get; set; }
 
         public Order(string Account, string cardNumber, int ProductID, int Quantity, string ProductName, string EAN, decimal Price)
         {
@@ -28,7 +28,6 @@ namespace DTOs
             this.Quantity = Quantity;
             this.ProductName = ProductName;
             ProductEan = EAN;
-            When = DateTime.Now;
         }
     }
 }

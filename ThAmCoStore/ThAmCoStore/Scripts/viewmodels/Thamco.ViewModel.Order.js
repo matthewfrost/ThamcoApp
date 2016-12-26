@@ -15,16 +15,20 @@
                 debugger;
                 var items, order, current;
 
-                items = [];
+                items = ko.observableArray([]);
                 for (var i = 0; i < self.ItemOrder().length; i++) {
                     current = self.ItemOrder()[i];
                     order = new Thamco.Model.Order();
                     order.AccountName(self.User());
                     order.CardNumber(self.CardNumber());
-                    order.ProductId(current.ID);
+                    order.ProductId(current.ID());
                     order.Quantity(1);
-                    order.ProductName(current.Name);
-                    order.ProductEan(current.EAN);
+                    order.ProductName(current.Name());
+                    order.ProductEan(current.EAN());
+                    order.Id(0);
+                    order.Supplier(current.Supplier());
+                    order.TotalPrice(10);
+                    order.When(new Date());
                     items.push(order);
                 }
                 self.submitOrder(self.ItemSuccess, items);
@@ -33,7 +37,7 @@
             self.submitOrder = function (callback, data) {
                 debugger;
                 Thamco.Controller.Order.submitOrder({
-                    data: data,
+                    data: ko.mapping.toJS(data),
                     success: callback
                 });
             }

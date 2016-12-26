@@ -55,8 +55,9 @@
                 var item, c;
                 for (var i = 0; i < data.length; i++) {
                     item = new Thamco.Model.Item();
+                    debugger;
                     c = data[i]
-                    item.ID(c.ID);
+                    item.ID(c.Id);
                     item.Name(c.Name);
                     item.EAN(c.Ean);
                     item.Category(c.Category);

@@ -10,6 +10,9 @@
             self.Quantity = ko.observable(null);
             self.ProductName = ko.observable(null);
             self.ProductEan = ko.observable(null);
+            self.When = ko.observable(null);
+            self.TotalPrice = ko.observable(null);
+            self.Supplier = ko.observable(null);
         }
     }
 });

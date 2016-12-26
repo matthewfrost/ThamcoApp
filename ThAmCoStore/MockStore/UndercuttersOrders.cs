@@ -7,7 +7,7 @@ using IDataSources;
 using DTOs;
 namespace MockStore
 {
-    class UndercuttersOrders: IUndercutersOrders
+    public class UndercuttersOrders: IUndercutersOrders
     {
         public bool submitOrder(Order order)
         {

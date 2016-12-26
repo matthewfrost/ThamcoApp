@@ -7,7 +7,7 @@ using DTOs;
 using IDataSources;
 namespace MockStore
 {
-    class BazzasBazaarOrders: IBazzasBazaarOrders
+    public class BazzasBazaarOrders: IBazzasBazaarOrders
     {
         public bool submitOrder(Order order)
         {

@@ -30,7 +30,9 @@ namespace ThAmCoStore
             container.Register<ISelectionBoxSource, SelectionBoxSource>(Lifestyle.Transient);
             container.Register<IProductSource, ProductSource>(Lifestyle.Transient);
             container.Register<IWrappingSource, WrappingSource>(Lifestyle.Transient);
-
+            container.Register<IDodgyDealersOrders, DodgyDealersOrders>(Lifestyle.Transient);
+            container.Register<IUndercutersOrders, UndercuttersOrders>(Lifestyle.Transient);
+            container.Register<IBazzasBazaarOrders,BazzasBazaarOrders>(Lifestyle.Transient);
             container.Verify();
 
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
