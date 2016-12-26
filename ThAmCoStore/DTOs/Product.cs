@@ -19,9 +19,10 @@ namespace DTOs
         public string Description { get; set; }
         public decimal Price { get; set; }
         public bool InStock { get; set; }
+        public string Supplier { get; set; }
         public DateTime ExpectedRestock { get; set; }
 
-        public Product(int? ID, string Ean, int CategoryID, string CategoryName, int BrandID, string BrandName, string Name, string Description, decimal Price, bool inStock, DateTime? expectedRestock)
+        public Product(int? ID, string Ean, int CategoryID, string CategoryName, int BrandID, string BrandName, string Name, string Description, decimal Price, bool inStock, DateTime? expectedRestock, string Supplier)
         {
             this.Id = ID;
             this.Ean = Ean;
@@ -34,6 +35,7 @@ namespace DTOs
             this.Price = Price;
             this.ExpectedRestock = ExpectedRestock;
             this.InStock = InStock;
+            this.Supplier = Supplier;
         }
     }
 }

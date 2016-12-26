@@ -1,21 +1,16 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    
+
 }
-<h3>Staging</h3>
 <div class="row">
     <span class="col-xs-1">search</span>
     <div class="col-xs-2">
         <input id="search" type="text" data-bind="textInput: filter" />
     </div>
-    <span  class="col-xs-1">Min Price</span>
-    <div class="col-xs-1">
-        <input data-bind="textInput: minPrice" type="number"/>
-    </div>
+    <span class="col-xs-1">Min Price</span>
+    <input class="col-xs-1" data-bind="textInput: minPrice" type="number" />
     <span class="col-xs-1">Max Price</span>
-    <div class="col-xs-1">
-        <input data-bind="textInput: maxPrice" type="number" />
-    </div>
+    <input class="col-xs-1" data-bind="textInput: maxPrice" type="number" />
 </div>
 <!--ko if: $root.LoggedIn()-->
 <div class="row">

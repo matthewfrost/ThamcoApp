@@ -58,14 +58,17 @@
                     c = data[i]
                     item.ID(c.ID);
                     item.Name(c.Name);
-                    item.EAN(c.EAN);
+                    item.EAN(c.Ean);
                     item.Category(c.Category);
                     item.CategoryID(c.CategoryID);
                     item.BrandID(c.BrandID);
                     item.Brand(c.Brand);
                     item.Description(c.Description);
                     item.Price(c.Price);
+                    item.InStock(c.InStock);
+                    item.Supplier(c.Supplier);
                     self.Products().push(item);
+                    debugger;
                 }
             }
 
@@ -97,6 +100,7 @@
                 //    Cookies.set(user, obj);
                 //}
                 Cookies.set(user, [{ itemName: self.SelectedBox().Name(), itemPrice: self.SelectedBox().Price() }]);
+                Cookies.set(user + "items", ko.mapping.toJSON(self.Products()));
             }
 
             self.toggleEdit = function () {

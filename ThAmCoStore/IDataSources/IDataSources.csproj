@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOrderSource.cs" />
+    <Compile Include="IBazzasBazaarOrders.cs" />
+    <Compile Include="IDodgyDealersOrders.cs" />
+    <Compile Include="IKhansKwikimartOrders.cs" />
     <Compile Include="IProductSource.cs" />
     <Compile Include="ISelectionBoxSource.cs" />
+    <Compile Include="IUndercutersOrders.cs" />
     <Compile Include="IUserSource.cs" />
     <Compile Include="IWrappingSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

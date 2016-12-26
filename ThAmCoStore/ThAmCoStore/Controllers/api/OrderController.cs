@@ -11,7 +11,11 @@ namespace ThAmCoStore.Controllers.api
 {
     public class OrderController : ApiController
     {
-        IOrderSource source;
+        IDodgyDealersOrders DodgyDealers;
+        IKhansKwikimartOrders KhansKwikimart;
+        IUndercutersOrders Undercutters;
+        IBazzasBazaarOrders BazzasBazaar;
+
         // GET: api/Order
         public IEnumerable<string> Get()
         {
@@ -24,25 +28,62 @@ namespace ThAmCoStore.Controllers.api
             return "value";
         }
 
-        // POST: api/Order
-        public bool Post([FromBody]Order order)
+        // PUT: api/Order
+        //public bool Put([FromBody]Order order)
+        //{
+        //    bool result = false;
+        //   //return source.submitOrder(order);
+        //    switch (order.supplier.ToLower())
+        //    {
+        //        case "undercutters":
+        //            result = Undercutters.submitOrder(order);
+        //            break;
+        //        case "dodgydealers":
+        //            result = DodgyDealers.submitOrder(order);
+        //            break;
+        //        case "bazzasbazaar":
+        //            result = BazzasBazaar.submitOrder(order);
+        //            break;
+        //    }
+
+        //    return result;
+        //}
+
+        public bool Put([FromBody] List<Order> orders)
         {
-           return source.submitOrder(order);
+            bool result = false;
+            foreach(Order o in orders)
+            {
+                switch (o.supplier.ToLower())
+                {
+                    case "undercutters":
+                        result = Undercutters.submitOrder(o);
+                        break;
+                    case "dodgydealers":
+                        result = DodgyDealers.submitOrder(o);
+                        break;
+                    case "bazzasbazaar":
+                        result = BazzasBazaar.submitOrder(o);
+                        break;
+                }
+            }
+
+            return result;
         }
 
-        public bool Post([FromBody] List<Order> orders)
-        {
-            return source.submitOrder(orders);
-        }
-
-        // PUT: api/Order/5
-        public void Put(int id, [FromBody]string value)
+        // POST: api/Order/5
+        public void Post(int id, [FromBody]string value)
         {
         }
 
         // DELETE: api/Order/5
         public void Delete(int id)
         {
+        }
+
+        private void checkSupplier(Order order)
+        {
+
         }
     }
 }

@@ -11,6 +11,7 @@ namespace ThAmCoStore.Controllers.api
     public class WrappingController : ApiController
     {
         IWrappingSource source;
+        IKhansKwikimartOrders orderSource;
 
         public WrappingController(IWrappingSource source)
         {
@@ -30,8 +31,9 @@ namespace ThAmCoStore.Controllers.api
         }
 
         // POST: api/Wrapping
-        public void Post([FromBody]string value)
+        public void Post([FromBody]WrappingOrder order)
         {
+            orderSource.submitOrder(order);
         }
 
         // PUT: api/Wrapping/5

@@ -209,6 +209,7 @@
     <None Include="Properties\PublishProfiles\ThAmCoStore.pubxml" />
     <Content Include="Scripts\controllers\Thamco.Controllers.Box.js" />
     <Content Include="Scripts\controllers\Thamco.Controllers.Item.js" />
+    <Content Include="Scripts\controllers\Thamco.Controllers.Order.js" />
     <Content Include="Scripts\controllers\Thamco.Controllers.User.js" />
     <Content Include="Scripts\controllers\Thamco.Controllers.Wrapping.js" />
     <Content Include="Scripts\helper\Thamco.Helper.User.js" />
@@ -238,7 +239,9 @@
     <Content Include="Scripts\models\Thamco.Models.Box.js" />
     <Content Include="Scripts\models\Thamco.Models.CartOrder.js" />
     <Content Include="Scripts\models\Thamco.Models.Item.js" />
+    <Content Include="Scripts\models\Thamco.Models.Order.js" />
     <Content Include="Scripts\models\Thamco.Models.Wrapping.js" />
+    <Content Include="Scripts\models\Thamco.Models.WrappingOrder.js" />
     <Content Include="Scripts\viewmodels\Thamco.ViewModel.Cart.js" />
     <Content Include="Scripts\viewmodels\Thamco.ViewModel.Create.js" />
     <Content Include="Scripts\viewmodels\Thamco.ViewModel.Details.js" />

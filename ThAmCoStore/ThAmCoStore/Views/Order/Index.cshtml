@@ -6,17 +6,17 @@
 
 <div class="row">
     <span class="col-xs-1">Name</span>
-    <input class="col-xs-2"/>
+    <input data-bind="textInput: Name" class="col-xs-2"/>
 </div>
 <div class="row">
     <span class="col-xs-1">Card Number</span>
-    <input class="col-xs-2"/>
+    <input data-bind="textInput: CardNumber" class="col-xs-2"/>
 </div>
 <div class="row">
     <span class="col-xs-1">Security Number</span>
-    <input class="col-xs-1"/>
+    <input data-bind="textInput: SecurityNumber" class="col-xs-1"/>
 </div>
 <div class="row">
-    <button class="buy">Order</button>
+    <button data-bind="click: $root.ValidateForm" class="buy">Order</button>
 </div>
 

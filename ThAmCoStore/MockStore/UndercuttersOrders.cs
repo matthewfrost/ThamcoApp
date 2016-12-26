@@ -7,11 +7,11 @@ using IDataSources;
 using DTOs;
 namespace MockStore
 {
-    public class OrderSource: IOrderSource
+    class UndercuttersOrders: IUndercutersOrders
     {
         public bool submitOrder(Order order)
         {
-            if(order != null)
+            if (order != null)
             {
                 return true;
             }
@@ -19,19 +19,6 @@ namespace MockStore
             {
                 return false;
             }
-        }
-
-        public bool submitOrder(List<Order> orders)
-        {
-            bool valid = true;
-            foreach(Order o in orders)
-            {
-                if(o == null)
-                {
-                    valid = false;
-                }
-            }
-            return valid;
         }
     }
 }

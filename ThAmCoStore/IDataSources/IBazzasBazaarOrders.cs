@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using DTOs;
 namespace IDataSources
 {
-    public interface IOrderSource
+    public interface IBazzasBazaarOrders
     {
         bool submitOrder(Order order);
-        bool submitOrder(List<Order> orders);
     }
 }

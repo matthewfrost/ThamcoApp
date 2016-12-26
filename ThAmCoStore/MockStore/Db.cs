@@ -49,10 +49,10 @@ namespace MockStore
 
         private void createProducts()
         {
-            Products.Add(new Product(1, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 1", "Description", 0.99m, true, null));
-            Products.Add(new Product(2, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 2", "Description", 0.99m, true, null));
-            Products.Add(new Product(3, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 3", "Description", 0.99m, true, null));
-            Products.Add(new Product(4, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 4", "Description", 0.99m, true, null));
+            Products.Add(new Product(1, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 1", "Description", 0.99m, true, null, "undercutters"));
+            Products.Add(new Product(2, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 2", "Description", 0.99m, true, null, "dodgy dealers"));
+            Products.Add(new Product(3, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 3", "Description", 0.99m, true, null, "bazzas bazaar"));
+            Products.Add(new Product(4, "randomEAN", 1, "Category 1", 1, "Brand1", "Item 4", "Description", 0.99m, true, null, "undercutters"));
         }
 
         private void createBoxes()
