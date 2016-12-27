@@ -8,8 +8,9 @@
             self.SecurityNumber = ko.observable(null);
             self.User = ko.observable(null);
             self.ItemOrder = ko.observableArray([]);
-            self.WrappingOrder = ko.observableArray([]);
+            self.WrappingOrder = ko.observable(null);
             self.BoxOrder = ko.observableArray([]);
+            self.orderSuccess = ko.observable(false);
 
             self.ValidateForm = function () {
                 debugger;
@@ -25,7 +26,7 @@
                     order.Quantity(1);
                     order.ProductName(current.Name());
                     order.ProductEan(current.EAN());
-                    order.Id(0);
+                    //order.Id(0);
                     order.Supplier(current.Supplier());
                     order.TotalPrice(10);
                     order.When(new Date());
@@ -43,6 +44,27 @@
             }
             self.ItemSuccess = function (data, status, jqxhr) {
                 debugger;
+                if (data) {
+                    //self.orderSuccess(true);
+                    //Cookies.remove(self.User());
+                    //Cookies.remove(self.User() + "wrapping");
+                    //Cookies.remove(self.User() + "items");
+                    var order = new Thamco.Model.WrappingOrder();
+                    order.AccountName(self.User());
+                    order.CardNumber(self.CardNumber());
+                    order.ProductId(self.WrappingOrder.ID());
+                    order.Quantity(1);
+                    order.TotalPrice(self.WrappingOrder.Price());
+                    debugger;
+                    Thamco.Controller.Wrapping.submitOrder({
+                        data: ko.mapping.toJS(order),
+                        options: success
+                    });
+
+                    function success(data, status, jqxhr) {
+                        debugger;
+                    }
+                }
             }
 
             self.Init = function () {
@@ -54,7 +76,7 @@
                 Box = Cookies.get(self.User());
                 debugger;
                 self.ItemOrder = ko.mapping.fromJS(JSON.parse(Items));
-                //self.WrappingOrder = ko.mapping.fromJS(JSON.parse(Wrapping));
+                self.WrappingOrder = ko.mapping.fromJS(JSON.parse(Wrapping));
                 //self.BoxOrder = ko.mapping.fromJS(JSON.parse(Box));
                 debugger;
             }

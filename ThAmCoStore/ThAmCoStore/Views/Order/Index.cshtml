@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<!--ko if: $root.orderSuccess() == false-->
 <div class="row">
     <span class="col-xs-1">Name</span>
     <input data-bind="textInput: Name" class="col-xs-2"/>
@@ -19,4 +19,11 @@
 <div class="row">
     <button data-bind="click: $root.ValidateForm" class="buy">Order</button>
 </div>
+<!--/ko-->
+<!--ko if: $root.orderSuccess() == true-->
+<div class="row">
+    <div class="col-xs-5"></div>
+<h2 class="col-xs-2">Order Successful</h2>
+</div>
+<!--/ko-->
 

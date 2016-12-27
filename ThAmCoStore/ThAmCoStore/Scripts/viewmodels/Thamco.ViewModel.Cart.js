@@ -26,14 +26,15 @@
 
             self.Purchase = function () {
                 Cookies.set(self.User() + "wrapping", ko.mapping.toJSON(self.SelectedWrapping()));
+                debugger;
                 window.open("/Order/Index", "_self");
             }
 
             self.getCookies= function () {
-                var cookie, user, current, cartOrder;
+                var cookie, current, cartOrder;
 
-                user = $('#user').text();
-                cookie = JSON.parse(Cookies.get(user));
+                self.User($('#user').text());
+                cookie = JSON.parse(Cookies.get(self.User()));
 
                 for (var i = 0; i < cookie.length; i++) {
                     current = cookie[i];

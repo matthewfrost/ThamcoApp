@@ -8,7 +8,6 @@
             self.SelectedBox = ko.observable(null);
             self.Products = ko.observableArray([]);
             self.LoggedIn = ko.observable(null);
-            
 
             self.EditMode = ko.observable(false);
             self.Init = function () {

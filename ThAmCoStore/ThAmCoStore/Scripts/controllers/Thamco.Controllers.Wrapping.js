@@ -20,6 +20,16 @@
                     contentType: 'application/json'
                 });
             },
+
+            submitOrder: function (options) {
+                $.ajax({
+                    url: '/' + Thamco.Controller.Wrapping.url,
+                    type: 'POST',
+                    success: options.success,
+                    contentType: 'application/json',
+                    data: options.data
+                });
+            }
         }
     }
 });
