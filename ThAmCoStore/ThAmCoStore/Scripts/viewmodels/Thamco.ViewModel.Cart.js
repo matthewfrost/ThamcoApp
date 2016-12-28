@@ -11,6 +11,7 @@
             self.BoxOrder = new Thamco.Model.BoxOrder();
             self.WrappingCost = ko.observable(0);
             self.SelectedWrapping = ko.observable(new Thamco.Model.Wrapping());
+
             self.TotalCost = ko.pureComputed(function () {
                 if (typeof self.SelectedWrapping() != 'undefined') {
                     return parseFloat(self.Items().ItemPrice()) + parseFloat(self.SelectedWrapping().Price());
@@ -19,10 +20,10 @@
                     return 'Select Wrapping Type';
                 }
             });
+
             self.removeItem = function (item, event) {
                 var index, cookieObj, user, removedItem;
 
-                self.User( $('#user').text());
                 Cookies.remove(self.User());
                 self.Items(null);
             }
@@ -42,16 +43,32 @@
                 var cookie, current, cartOrder;
 
                 self.User($('#user').text());
-                cookie = JSON.parse(Cookies.get(self.User()));
-                self.BoxOrder.BoxID(cookie.itemID);
-                debugger;
-                for (var i = 0; i < cookie.length; i++) {
-                    current = cookie[i];
-                    cartOrder = new Thamco.Model.CartOrder();
-                    cartOrder.ItemName(current.itemName);
-                    cartOrder.ItemPrice(current.itemPrice);
-                    self.Items(cartOrder);
+                cookie = Cookies.get(self.User());
+
+                if (cookie !== null && typeof cookie !== 'undefined') {
+                    cookie = JSON.parse(Cookies.get(self.User()));
+                    self.getBox(cookie.itemID, self.getBoxSuccess);
                 }
+                
+            }
+
+            self.getBox = function (boxID, callback) {
+                Thamco.Controller.Box.GetByID({
+                    success: callback,
+                    ID: boxID,
+                });
+            }
+
+            self.getBoxSuccess = function (data, status, jqxhr) {
+                var cartOrder;
+
+                self.BoxOrder.BoxID(data.ID);
+                
+                cartOrder = new Thamco.Model.CartOrder();
+                cartOrder.ItemName(data.Name);
+                cartOrder.ItemPrice(data.Price);
+
+                self.Items(cartOrder);
             }
 
             self.getWrappings = function (callback) {

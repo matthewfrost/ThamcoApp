@@ -1,10 +1,10 @@
-﻿var Thamco = $.extend(true, {}, Thamco,{
+﻿var Thamco = $.extend(true, {}, Thamco, {
     ViewModel: {
         Index: function () {
             var self = this;
 
             self.Boxes = ko.observableArray([]);
-            
+
             self.filter = ko.observable('');
             self.minPrice = ko.observable("");
             self.maxPrice = ko.observable("");
@@ -14,7 +14,7 @@
                 return self.Boxes().filter(function (item) { return item.Visible() == true });
             });
 
-            self.getLoggedInUser= function () {
+            self.getLoggedInUser = function () {
                 var Email;
 
                 Email = $('#user').html();
@@ -57,12 +57,13 @@
                 min = self.minPrice();
                 max = self.maxPrice();
 
-                if (min == "" || max == "") {
-                    return self.searchedBoxes();
+                if (min == "") {
+                    min = 0;
                 }
-                else {
-                    return self.searchedBoxes().filter(function (item) { return item.Price() <= max && item.Price() >= min });
+                if (max == "") {
+                    max = 999;
                 }
+                return self.searchedBoxes().filter(function (item) { return item.Price() <= max && item.Price() >= min });
             });
 
             self.GetBoxes = function (callback) {
