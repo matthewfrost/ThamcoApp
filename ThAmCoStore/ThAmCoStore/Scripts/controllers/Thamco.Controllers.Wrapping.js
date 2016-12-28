@@ -22,12 +22,13 @@
             },
 
             submitOrder: function (options) {
+                debugger;
                 $.ajax({
                     url: '/' + Thamco.Controller.Wrapping.url,
                     type: 'POST',
                     success: options.success,
                     contentType: 'application/json',
-                    data: options.data
+                    data: JSON.stringify(options.data)
                 });
             }
         }

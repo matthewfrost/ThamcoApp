@@ -31,3 +31,17 @@ C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\MockStore\bin\Debug\EntityFr
 C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\MockStore\obj\Debug\MockStore.csprojResolveAssemblyReference.cache
 C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\MockStore\obj\Debug\MockStore.dll
 C:\Users\Matthew\Documents\ThamcoWebApp\ThAmCoStore\MockStore\obj\Debug\MockStore.pdb
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\MockStore.dll.config
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\MockStore.dll
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\MockStore.pdb
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\DTOs.dll
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\EntityFramework.dll
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\IDataSources.dll
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\DTOs.pdb
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\IDataSources.pdb
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\EntityFramework.xml
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\obj\Debug\MockStore.csprojResolveAssemblyReference.cache
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\obj\Debug\MockStore.dll
+C:\Users\Matthew\Documents\ThamcoApp\ThAmCoStore\MockStore\obj\Debug\MockStore.pdb

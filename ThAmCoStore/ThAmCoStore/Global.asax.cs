@@ -33,6 +33,8 @@ namespace ThAmCoStore
             container.Register<IDodgyDealersOrders, DodgyDealersOrders>(Lifestyle.Transient);
             container.Register<IUndercutersOrders, UndercuttersOrders>(Lifestyle.Transient);
             container.Register<IBazzasBazaarOrders,BazzasBazaarOrders>(Lifestyle.Transient);
+            container.Register<IKhansKwikimartOrders, KhansKwikimartOrders>(Lifestyle.Transient);
+            container.Register<ISelectionBoxOrders, SelectionBoxOrders>(Lifestyle.Transient);
             container.Verify();
 
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);

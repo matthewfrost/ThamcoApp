@@ -4,8 +4,11 @@
             var self = this;
 
             self.User = ko.observable(null);
+            self.Recipient = ko.observable(null);
+            self.Message = ko.observable(null);
             self.Items = ko.observable(null);
             self.Wrappings = ko.observableArray([]);
+            self.BoxOrder = new Thamco.Model.BoxOrder();
             self.WrappingCost = ko.observable(0);
             self.SelectedWrapping = ko.observable(new Thamco.Model.Wrapping());
             self.TotalCost = ko.pureComputed(function () {
@@ -25,6 +28,11 @@
             }
 
             self.Purchase = function () {
+                self.BoxOrder.Recipient(self.Recipient());
+                self.BoxOrder.Message(self.Message());
+                self.BoxOrder.AccountName(self.User());
+                self.BoxOrder.Total(self.TotalCost());
+                Cookies.set(self.User(), ko.mapping.toJSON(self.BoxOrder));
                 Cookies.set(self.User() + "wrapping", ko.mapping.toJSON(self.SelectedWrapping()));
                 debugger;
                 window.open("/Order/Index", "_self");
@@ -35,7 +43,8 @@
 
                 self.User($('#user').text());
                 cookie = JSON.parse(Cookies.get(self.User()));
-
+                self.BoxOrder.BoxID(cookie.itemID);
+                debugger;
                 for (var i = 0; i < cookie.length; i++) {
                     current = cookie[i];
                     cartOrder = new Thamco.Model.CartOrder();

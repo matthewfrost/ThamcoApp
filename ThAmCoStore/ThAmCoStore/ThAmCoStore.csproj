@@ -177,6 +177,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\api\BoxController.cs" />
+    <Compile Include="Controllers\api\BoxOrderController.cs" />
     <Compile Include="Controllers\api\ItemController.cs" />
     <Compile Include="Controllers\api\OrderController.cs" />
     <Compile Include="Controllers\api\UserController.cs" />
@@ -208,6 +209,7 @@
     <None Include="Properties\PublishProfiles\ThAmCoStore-Dev - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ThAmCoStore.pubxml" />
     <Content Include="Scripts\controllers\Thamco.Controllers.Box.js" />
+    <Content Include="Scripts\controllers\Thamco.Controllers.BoxOrder.js" />
     <Content Include="Scripts\controllers\Thamco.Controllers.Item.js" />
     <Content Include="Scripts\controllers\Thamco.Controllers.Order.js" />
     <Content Include="Scripts\controllers\Thamco.Controllers.User.js" />
@@ -237,6 +239,7 @@
     <Content Include="Scripts\libs\respond.min.js" />
     <None Include="Scripts\libs\_references.js" />
     <Content Include="Scripts\models\Thamco.Models.Box.js" />
+    <Content Include="Scripts\models\Thamco.Models.BoxOrder.js" />
     <Content Include="Scripts\models\Thamco.Models.CartOrder.js" />
     <Content Include="Scripts\models\Thamco.Models.Item.js" />
     <Content Include="Scripts\models\Thamco.Models.Order.js" />

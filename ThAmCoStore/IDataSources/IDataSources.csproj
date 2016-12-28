@@ -45,6 +45,7 @@
     <Compile Include="IDodgyDealersOrders.cs" />
     <Compile Include="IKhansKwikimartOrders.cs" />
     <Compile Include="IProductSource.cs" />
+    <Compile Include="ISelectionBoxOrders.cs" />
     <Compile Include="ISelectionBoxSource.cs" />
     <Compile Include="IUndercutersOrders.cs" />
     <Compile Include="IUserSource.cs" />

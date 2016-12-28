@@ -99,7 +99,7 @@
                 //    obj.push({ itemName: self.SelectedBox().Name(), itemPrice: self.SelectedBox().Price() });
                 //    Cookies.set(user, obj);
                 //}
-                Cookies.set(user, [{ itemName: self.SelectedBox().Name(), itemPrice: self.SelectedBox().Price() }]);
+                Cookies.set(user, [{ itemName: self.SelectedBox().Name(), itemPrice: self.SelectedBox().Price(), itemID: self.SelectedBox().ID() }]);
                 Cookies.set(user + "items", ko.mapping.toJSON(self.Products()));
             }
 

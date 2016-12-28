@@ -13,9 +13,10 @@ namespace ThAmCoStore.Controllers.api
         IWrappingSource source;
         IKhansKwikimartOrders orderSource;
 
-        public WrappingController(IWrappingSource source)
+        public WrappingController(IWrappingSource source, IKhansKwikimartOrders orderSource)
         {
             this.source = source;
+            this.orderSource = orderSource;
         }
 
         // GET: api/Wrapping
@@ -31,9 +32,9 @@ namespace ThAmCoStore.Controllers.api
         }
 
         // POST: api/Wrapping
-        public void Post([FromBody]WrappingOrder order)
+        public bool Post([FromBody]WrappingOrder order)
         {
-            orderSource.submitOrder(order);
+            return orderSource.submitOrder(order);
         }
 
         // PUT: api/Wrapping/5

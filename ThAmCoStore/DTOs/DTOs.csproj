@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Box.cs" />
+    <Compile Include="BoxOrder.cs" />
     <Compile Include="Brand.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Order.cs" />

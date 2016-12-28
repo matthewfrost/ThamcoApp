@@ -15,9 +15,8 @@ namespace DTOs
         public int Quantity { get; set; }
         public decimal TotalPrice { get; set; }
 
-        public WrappingOrder(int Id, string AccountName, string CardNumber, int ProductID, int Quantity, decimal TotalPrice)
+        public WrappingOrder(string AccountName, string CardNumber, int ProductID, int Quantity, decimal TotalPrice)
         {
-            this.Id = Id;
             this.AccountName = AccountName;
             this.CardNumber = CardNumber;
             this.ProductId = ProductID;
