@@ -4,7 +4,7 @@ var Thamco = $.extend(true, {}, Thamco, {
         Cart: {
             Init: function () {
                 ViewModel = new Thamco.ViewModel.Cart();
-                ViewModel.getCookies();
+                ViewModel.getCookies(ViewModel.getBoxSuccess);
                 ViewModel.getWrappings(ViewModel.getWrappingsSuccess);
                 ko.applyBindings(ViewModel);
             }  

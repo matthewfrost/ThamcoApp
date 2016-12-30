@@ -39,7 +39,6 @@
             },
 
             self.getBoxDetailsSuccess = function (data, status, jqxhr) {
-                debugger;
                 var SelectionBox = new Thamco.Model.SelectionBox();
                 SelectionBox.ID(data.ID);
                 SelectionBox.Name(data.Name);
@@ -54,7 +53,7 @@
                 var item, c;
                 for (var i = 0; i < data.length; i++) {
                     item = new Thamco.Model.Item();
-                    debugger;
+
                     c = data[i]
                     item.ID(c.Id);
                     item.Name(c.Name);
@@ -68,7 +67,6 @@
                     item.InStock(c.InStock);
                     item.Supplier(c.Supplier);
                     self.Products().push(item);
-                    debugger;
                 }
             }
 
@@ -117,7 +115,6 @@
 
             self.PostSuccess = function (data, status, jqxhr) {
                 if (data == 200) {
-                    debugger;
                 }
                 else {
                     alert("Something went wrong");

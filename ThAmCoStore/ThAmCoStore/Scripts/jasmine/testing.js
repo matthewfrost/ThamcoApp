@@ -197,9 +197,23 @@ $(function () {
     //    });
     //});
 
-    describe("Cart page tests", function () {
+    describe("Get selected box", function () {
         beforeAll(function (done) {
             CartViewModel = new Thamco.ViewModel.Cart();
+            CartViewModel.getCookies(function (data, status, jqxhr) {
+                CartViewModel.getBoxSuccess(data, status, jqxhr);
+                done();
+            });
+        });
+
+        it("should get the box selected for purchase", function (done) {
+            expect(CartViewModel.BoxOrder.BoxID()).toEqual(1);
+            done();
+        });
+    });
+
+    describe("Cart page tests", function () {
+        beforeAll(function (done) {
             Thamco.Controller.Wrapping.Get({
                 success: function (data, status, jqxhr) {
                     CartViewModel.getWrappingsSuccess(data, status, jqxhr);
@@ -210,6 +224,66 @@ $(function () {
 
         it("should get all available wrappings", function (done) {
             expect(CartViewModel.Wrappings().length).toEqual(3);
+            done();
+        });
+
+        it("should change total cost when wrapping is changed", function (done) {
+            var oldPrice, Wrapping, newPrice;
+            debugger;
+            oldPrice = CartViewModel.TotalCost();
+            Wrapping = new Thamco.Model.Wrapping();
+            Wrapping.ID(2);
+            Wrapping.Price(3);
+            Wrapping.RangeID(2);
+            Wrapping.RangeName("range2");
+            Wrapping.Size(7);
+            Wrapping.TypeID(1);
+            Wrapping.TypeName("type2");
+            CartViewModel.SelectedWrapping(Wrapping);
+
+            newPrice = CartViewModel.TotalCost();
+
+            expect(newPrice).toBeGreaterThan(oldPrice);
+            done();
+
+        });
+
+        it("should not allow purchasing with no recipient or message", function (done) {
+            CartViewModel.Recipient("");
+            CartViewModel.Message("");
+
+            expect(CartViewModel.Purchase()).toBeFalsy();
+            done();
+        });
+
+        it("should not allow purchasing with no recipient", function (done) {
+            CartViewModel.Recipient("");
+            CartViewModel.Message("Test message");
+
+            expect(CartViewModel.Purchase()).toBeFalsy();
+            done();
+        });
+
+        it("should not allow purchasing with no message", function (done) {
+            CartViewModel.Recipient("Test recipient");
+            CartViewModel.Message("");
+
+            expect(CartViewModel.Purchase()).toBeFalsy();
+            done();
+        });
+
+        it("should allow the purchasing of a box with recipient and message", function (done) {
+            CartViewModel.Recipient("Test recipient");
+            CartViewModel.Message("Test message");
+
+            expect(CartViewModel.Purchase(true)).toBeTruthy();
+            done();
+        });
+
+        it("should allow the removal of a box from the cart", function (done) {
+            CartViewModel.removeItem();
+
+            expect(CartViewModel.Items()).toBeNull();
             done();
         });
     });

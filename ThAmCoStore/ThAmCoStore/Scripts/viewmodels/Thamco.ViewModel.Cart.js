@@ -14,10 +14,12 @@
 
             self.TotalCost = ko.pureComputed(function () {
                 if (typeof self.SelectedWrapping() != 'undefined') {
-                    return parseFloat(self.Items().ItemPrice()) + parseFloat(self.SelectedWrapping().Price());
-                }
-                else {
-                    return 'Select Wrapping Type';
+                    if (self.SelectedWrapping().ID() != null) {
+                        return parseFloat(self.Items().ItemPrice()) + parseFloat(self.SelectedWrapping().Price());
+                    }
+                    else {
+                        return parseFloat(self.Items().ItemPrice()) + parseFloat(self.Wrappings()[0].Price());
+                    }
                 }
             });
 
@@ -28,18 +30,43 @@
                 self.Items(null);
             }
 
-            self.Purchase = function () {
-                self.BoxOrder.Recipient(self.Recipient());
-                self.BoxOrder.Message(self.Message());
-                self.BoxOrder.AccountName(self.User());
-                self.BoxOrder.Total(self.TotalCost());
-                Cookies.set(self.User(), ko.mapping.toJSON(self.BoxOrder));
-                Cookies.set(self.User() + "wrapping", ko.mapping.toJSON(self.SelectedWrapping()));
-                debugger;
-                window.open("/Order/Index", "_self");
+            self.Purchase = function (debug) {
+                debug = debug || false; 
+                if (self.pageValidation()) {
+                    self.BoxOrder.Recipient(self.Recipient());
+                    self.BoxOrder.Message(self.Message());
+                    self.BoxOrder.AccountName(self.User());
+                    self.BoxOrder.Total(self.TotalCost());
+                    Cookies.set(self.User(), ko.mapping.toJSON(self.BoxOrder));
+                    Cookies.set(self.User() + "wrapping", ko.mapping.toJSON(self.SelectedWrapping()));
+
+                    if (!debug) {
+                        window.open("/Order/Index", "_self");
+                    }
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
 
-            self.getCookies= function () {
+            self.pageValidation = function () {
+                var result;
+                debugger;
+                result = true;
+                if (self.Recipient() != null && self.Message() != null) {
+                    if (self.Recipient().trim() == "" || self.Message().trim() == "") {
+                        result = false;
+                    }                    
+                }
+                else {
+                    result = false;
+                }
+
+                return result;
+            }
+
+            self.getCookies= function (callback) {
                 var cookie, current, cartOrder;
 
                 self.User($('#user').text());
@@ -47,7 +74,7 @@
 
                 if (cookie !== null && typeof cookie !== 'undefined') {
                     cookie = JSON.parse(Cookies.get(self.User()));
-                    self.getBox(cookie.itemID, self.getBoxSuccess);
+                    self.getBox(cookie.itemID, callback);
                 }
                 
             }
