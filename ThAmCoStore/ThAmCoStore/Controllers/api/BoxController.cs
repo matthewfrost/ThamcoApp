@@ -59,6 +59,7 @@ namespace ThAmCoStore.Controllers.api
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+            source.deleteBox(id);
         }
     }
 }

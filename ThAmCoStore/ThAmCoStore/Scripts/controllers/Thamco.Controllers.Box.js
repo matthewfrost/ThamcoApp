@@ -40,6 +40,16 @@
                     contentType: 'application/json',
                     data: JSON.stringify(options.data)
                 });
+            },
+
+            RemoveBox: function (options) {
+                $.ajax({
+                    url: Thamco.Controller.Box.url,
+                    type: 'DELETE',
+                    success: options.success,
+                    contentType: 'application/json',
+                    data: options.ID
+                });
             }
         }
     }

@@ -52,7 +52,7 @@
 
             self.pageValidation = function () {
                 var result;
-                debugger;
+
                 result = true;
                 if (self.Recipient() != null && self.Message() != null) {
                     if (self.Recipient().trim() == "" || self.Message().trim() == "") {

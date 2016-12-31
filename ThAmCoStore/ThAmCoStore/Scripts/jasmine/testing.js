@@ -1,4 +1,4 @@
-﻿var IndexViewModel, DetailsViewModel, CartViewModel;
+﻿var IndexViewModel, DetailsViewModel, CartViewModel, CreateViewModel;
 $(function () {
     var length;
 
@@ -18,6 +18,15 @@ $(function () {
             function changeSuccess() {
 
             }
+        }
+
+        Thamco.Controller.Box.RemoveBox({
+            success: DeleteSuccess,
+            ID: 5
+        });
+
+        function DeleteSuccess() {
+
         }
     });
     describe('Index tests', function () {
@@ -85,6 +94,89 @@ $(function () {
             done();
         })
     });
+
+    describe("Create Box page tests", function () {
+        beforeAll(function (done) {
+            CreateViewModel = new Thamco.ViewModel.Create();
+
+            CreateViewModel.getItems(function (data, status, jqxhr) {
+                CreateViewModel.getItemsSuccess(data, status, jqxhr);
+                done();
+            });
+        });
+
+        it("should get all items available", function (done) {
+            expect(CreateViewModel.Items().length).toEqual(4);
+            done();
+        });
+    });
+
+    //describe("Creating a valid box", function () {
+    //    var result;
+    //    beforeAll(function (done) {
+    //        CreateViewModel.Description("test description");
+    //        CreateViewModel.Name("test name");
+    //        CreateViewModel.Price("8.99");
+    //        CreateViewModel.SelectedItems().push(CreateViewModel.Items()[0]);
+    //        result = CreateViewModel.saveBox(true);
+    //        done();
+    //    });
+
+    //    it("should fail", function (done) {
+    //        expect(result).toBeFalsy();
+    //        done();
+    //    });
+    //});
+
+    describe("Creating invalid box", function () {
+        it("should fail to create a box with no name, description, price or items", function () {
+            var result;
+            result = CreateViewModel.ValidatePage();
+            expect(result).toBeFalsy();
+        });
+
+        it("should fail to create a box with no description, price or items", function () {
+            var result;
+            CreateViewModel.Name("test name");
+            result = CreateViewModel.ValidatePage();
+            expect(result).toBeFalsy();
+        });
+
+        it("should fail to create a box with no name, price or items", function () {
+            var result;
+            CreateViewModel.Description("test description");
+            result = CreateViewModel.ValidatePage();
+            expect(result).toBeFalsy();
+        });
+
+        it("should fail to create a box with no items", function () {
+            var result;
+
+            CreateViewModel.Description("test description");
+            CreateViewModel.Name("test name");
+            CreateViewModel.Price("7.99");
+            result = CreateViewModel.ValidatePage();
+            expect(result).toBeFalsy();
+        });
+
+        it("should fail to create a box with price under 5", function () {
+            CreateViewModel.Description("test description");
+            CreateViewModel.Name("test name");
+            CreateViewModel.Price("3.99");
+            CreateViewModel.SelectedItems().push(CreateViewModel.Items()[0]);
+            result = CreateViewModel.ValidatePage();
+            expect(result).toBeFalsy();
+        });
+
+        it("should fail to create a box with price over 25", function () {
+            var result;
+            CreateViewModel.Description("test description");
+            CreateViewModel.Name("test name");
+            CreateViewModel.Price("30.99");
+            CreateViewModel.SelectedItems().push(CreateViewModel.Items()[0]);
+            result = CreateViewModel.ValidatePage();
+        });
+    })
 
     describe("Box detail tests", function () {
         beforeAll(function (done) {

@@ -65,14 +65,12 @@
             }
 
             self.wrappingOrderSuccess = function (data, status, jqxhr) {
-                debugger;
                 if (data == true) {
                     self.submitBoxOrder(self.boxOrderSuccess);
                 }
             }
 
             self.submitBoxOrder = function (callback) {
-                debugger;
                 self.BoxOrder().CardNumber(self.CardNumber());
                 Thamco.Controller.BoxOrder.submitOrder({
                     success: callback,

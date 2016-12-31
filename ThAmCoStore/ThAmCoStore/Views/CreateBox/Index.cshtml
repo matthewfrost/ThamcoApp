@@ -7,16 +7,16 @@
 <h2>CreateBox</h2>
 <div class="row">
     <span class="col-xs-1 heading">Name: </span>
-    <input id="boxName" class="col-xs-4" type="text"/>
+    <input data-bind="textInput: $root.Name" id="boxName" class="col-xs-4" type="text"/>
     <div class="col-xs-2"></div>
     <span class="col-xs-1 heading">Price:</span>
-    <input id="boxPrice" class="col-xs-4" type="number" />
+    <input data-bind="textInput: $root.Price" id="boxPrice" class="col-xs-4" type="number" />
 </div>
 <div class="row">
     <span class="heading col-xs-1">Description:</span>
 </div>
 <div class="row">
-    <textarea id="boxDescription" cols="500" rows="2" class="col-xs-12"></textarea>
+    <textarea data-bind="textInput: $root.Description" id="boxDescription" cols="500" rows="2" class="col-xs-12"></textarea>
 </div>
 <div class="row">
     

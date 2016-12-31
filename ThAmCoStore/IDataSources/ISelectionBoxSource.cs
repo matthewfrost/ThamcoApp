@@ -15,5 +15,7 @@ namespace IDataSources
         Box createNewBox(Box newBox, string User);
 
         Box updateBox(int ID, Box box, string User);
+
+        void deleteBox(int ID);
     }
 }

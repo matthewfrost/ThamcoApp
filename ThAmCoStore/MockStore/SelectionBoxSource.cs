@@ -21,6 +21,7 @@ namespace MockStore
         public Box createNewBox(Box newBox, string User)
         {
             if (userExists(User)) {
+                newBox.ID = db.Boxes.Count + 1;
                 db.Boxes.Add(newBox);
                 return newBox;
             }else
@@ -75,6 +76,12 @@ namespace MockStore
             {
                 return false;
             }
+        }
+
+        public void deleteBox(int ID)
+        {
+            Box Box = db.Boxes.Where(b => b.ID == ID).FirstOrDefault();
+            db.Boxes.Remove(Box);
         }
     }
 }

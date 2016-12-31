@@ -4,7 +4,7 @@ var Thamco = $.extend(true, {}, Thamco, {
         Create: {
             Init: function () {
                 ViewModel = new Thamco.ViewModel.Create();
-                ViewModel.getItems();
+                ViewModel.getItems(ViewModel.getItemsSuccess);
             }
         }
     }
