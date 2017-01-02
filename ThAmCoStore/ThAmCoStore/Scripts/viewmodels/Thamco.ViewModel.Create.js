@@ -49,9 +49,9 @@
                 self.SelectedItems.remove(item);
             }
 
-            self.saveBox = function (Debug) {
-                var Box, Result;
-                Debug = Debug || false
+            self.saveBox = function (callback) {
+                var Box;
+                
                 if (self.ValidatePage()) {
                     Box = new Thamco.Model.SelectionBox();
                     Box.Name(self.Name());
@@ -59,37 +59,35 @@
                     Box.Price(self.Price());
                     Box.Contents(self.SelectedItems());
                     Box.Available(true);
-                    Box.Visible(true);  
-                    debugger;
+                    Box.Visible(true);
+
                     Thamco.Controller.Box.CreateNewBox({
-                        success: success,
+                        success: callback,
                         data: ko.mapping.toJS(Box)
                     });
+                }
+            }
 
-                    function success(data, status, jqxhr) {
-                        debugger;
-                        if (data == 200) {
-                            if (!Debug) {
-                                window.open(document.domain + "/Home/Index", "_self");
-                            }
-                            Result = true;
-                        }
-                        else {
-                            //alert("something went wrong");
-                            Result = false;
-                        }
-                        debugger;
-                        return Result;
+            self.saveBoxSuccess = function (data, status, jqxhr, Debug) {
+                var Result;
+                Debug = Debug || false
+                if (data == 200) {
+                    if (!Debug) {
+                        window.open(document.domain + "/Home/Index", "_self");
                     }
+                    Result = true;
                 }
                 else {
-                    Result = false
+                    //alert("something went wrong");
+                    Result = false;
                 }
+                return Result;
+
             }
 
             self.ValidatePage = function () {
                 var Name, Description, Price, Result;
-                debugger;
+
                 Result = true;
                 Name = self.Name();
                 Description = self.Description();

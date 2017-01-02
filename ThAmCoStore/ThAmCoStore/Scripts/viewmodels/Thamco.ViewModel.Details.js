@@ -51,6 +51,7 @@
 
             self.getItemsForBoxSuccess = function (data, status, jqxhr) {
                 var item, c;
+                debugger;
                 for (var i = 0; i < data.length; i++) {
                     item = new Thamco.Model.Item();
 
@@ -93,6 +94,7 @@
                     
                 }
                 Cookies.set(user, { itemName: self.SelectedBox().Name(), itemPrice: self.SelectedBox().Price(), itemID: self.SelectedBox().ID() });
+                debugger;
                 Cookies.set(user + "items", ko.mapping.toJSON(self.Products()));
             }
 

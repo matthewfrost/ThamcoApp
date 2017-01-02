@@ -57,7 +57,6 @@ namespace ThAmCoStore.Controllers.api
 
         public bool Put([FromBody] List<Order> orders)
         {
-            //Doesnt really work, will set result to last order
             bool result = false;
             foreach(Order o in orders)
             {
@@ -72,6 +71,10 @@ namespace ThAmCoStore.Controllers.api
                     case "bazzasbazaar":
                         result = BazzasBazaar.submitOrder(o);
                         break;
+                }
+                if (!result)
+                {
+                    break;
                 }
             }
 

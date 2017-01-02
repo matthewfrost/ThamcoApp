@@ -1,8 +1,8 @@
-﻿var IndexViewModel, DetailsViewModel, CartViewModel, CreateViewModel;
+﻿var IndexViewModel, DetailsViewModel, CartViewModel, CreateViewModel, OrderViewModel;
 $(function () {
     var length;
 
-    afterAll(function () {
+    afterAll(function (done) {
         //IndexViewModel = null;
         //ViewModel = null;
         //DetailsViewModel = null;
@@ -16,18 +16,14 @@ $(function () {
             DetailsViewModel.postChanges(changeSuccess);
 
             function changeSuccess() {
-
+                done();
             }
         }
 
         Thamco.Controller.Box.RemoveBox({
-            success: DeleteSuccess,
+            success: function (data, status, jqxhr) { done(); },
             ID: 5
         });
-
-        function DeleteSuccess() {
-
-        }
     });
     describe('Index tests', function () {
 
@@ -111,23 +107,6 @@ $(function () {
         });
     });
 
-    //describe("Creating a valid box", function () {
-    //    var result;
-    //    beforeAll(function (done) {
-    //        CreateViewModel.Description("test description");
-    //        CreateViewModel.Name("test name");
-    //        CreateViewModel.Price("8.99");
-    //        CreateViewModel.SelectedItems().push(CreateViewModel.Items()[0]);
-    //        result = CreateViewModel.saveBox(true);
-    //        done();
-    //    });
-
-    //    it("should fail", function (done) {
-    //        expect(result).toBeFalsy();
-    //        done();
-    //    });
-    //});
-
     describe("Creating invalid box", function () {
         it("should fail to create a box with no name, description, price or items", function () {
             var result;
@@ -175,16 +154,58 @@ $(function () {
             CreateViewModel.Price("30.99");
             CreateViewModel.SelectedItems().push(CreateViewModel.Items()[0]);
             result = CreateViewModel.ValidatePage();
+            expect(result).toBeFalsy();
         });
-    })
+    });
+
+    describe("Creating a valid box", function () {
+        var result;
+        beforeAll(function (done) {
+            CreateViewModel.Description("test description");
+            CreateViewModel.Name("test name");
+            CreateViewModel.Price("8.99");
+            CreateViewModel.SelectedItems().push(CreateViewModel.Items()[0]);
+            CreateViewModel.saveBox(function (data, status, jqxhr) {
+                result = CreateViewModel.saveBoxSuccess(data, status, jqxhr, true);
+                done();
+            });
+        });
+
+        it("should pass", function (done) {
+            expect(result).toBeTruthy();
+            done();
+        });
+    });
+
+    describe("Products for Boxes", function () {
+        beforeAll(function (done) {
+            DetailsViewModel = new Thamco.ViewModel.Details();
+            Thamco.Controller.Item.GetForBox({
+                ID: 1,
+                success: function (data, status, jqxhr) {
+                    DetailsViewModel.getItemsForBoxSuccess(data, status, jqxhr);
+                    done();
+                }
+            })
+        });
+
+        it("should get the items associated with a box", function (done) {
+            expect(DetailsViewModel.Products().length).toEqual(4);
+            done();
+        });
+    });
 
     describe("Box detail tests", function () {
         beforeAll(function (done) {
-            DetailsViewModel = new Thamco.ViewModel.Details();
+            
             Thamco.Controller.Box.GetByID({
                 ID: 1,
                 success: function (data, status, jqxhr) {
                     DetailsViewModel.getBoxDetailsSuccess(data, status, jqxhr);
+                    //DetailsViewModel.getItemsForBox(1, function (data, status, jqxhr) {
+                    //    DetailsViewModel.getItemsForBoxSuccess(data, status, jqxhr);
+                    //    done();
+                    //});   
                     done();
                 }
             })
@@ -249,23 +270,6 @@ $(function () {
         it("should get the new price of box", function () {
             expect(DetailsViewModel.SelectedBox().Price()).toEqual(2.50);
         });
-    })
-
-    describe("Products for Boxes", function () {
-        beforeAll(function (done) {
-            Thamco.Controller.Item.GetForBox({
-                ID: 1,
-                success: function (data, status, jqxhr) {
-                    DetailsViewModel.getItemsForBoxSuccess(data, status, jqxhr);
-                    done();
-                }
-            })
-        });
-
-        it("should get the items associated with a box", function (done) {
-            expect(DetailsViewModel.Products().length).toEqual(4);
-            done();
-        });
     });
 
     //describe("Editing a box", function () {
@@ -314,6 +318,11 @@ $(function () {
             });
         });
 
+        afterAll(function () {
+            OrderViewModel = new Thamco.ViewModel.Order();
+            OrderViewModel.Init();
+        });
+
         it("should get all available wrappings", function (done) {
             expect(CartViewModel.Wrappings().length).toEqual(3);
             done();
@@ -321,7 +330,7 @@ $(function () {
 
         it("should change total cost when wrapping is changed", function (done) {
             var oldPrice, Wrapping, newPrice;
-            debugger;
+
             oldPrice = CartViewModel.TotalCost();
             Wrapping = new Thamco.Model.Wrapping();
             Wrapping.ID(2);
@@ -329,7 +338,7 @@ $(function () {
             Wrapping.RangeID(2);
             Wrapping.RangeName("range2");
             Wrapping.Size(7);
-            Wrapping.TypeID(1);
+            Wrapping.TypeID(2);
             Wrapping.TypeName("type2");
             CartViewModel.SelectedWrapping(Wrapping);
 
@@ -368,15 +377,122 @@ $(function () {
             CartViewModel.Recipient("Test recipient");
             CartViewModel.Message("Test message");
 
-            expect(CartViewModel.Purchase(true)).toBeTruthy();
+            expect(CartViewModel.Purchase(null, null, true)).toBeTruthy();
             done();
         });
 
-        it("should allow the removal of a box from the cart", function (done) {
-            CartViewModel.removeItem();
+        //it("should allow the removal of a box from the cart", function (done) {
+        //    CartViewModel.removeItem();
 
-            expect(CartViewModel.Items()).toBeNull();
-            done();
+        //    expect(CartViewModel.Items()).toBeNull();
+        //    done();
+        //});
+    });
+
+    describe("Checkout page tests", function () {
+        beforeAll(function () {
+            
+        });
+
+        it("should get the selected box", function () {
+            expect(OrderViewModel.BoxOrder().BoxID()).toEqual(1);
+        });
+
+        it("should get the items for the selected box", function () {
+            expect(OrderViewModel.ItemOrder().length).toEqual(4);
+        });
+
+        it("should get the selected wrapping for the order", function () {
+            expect(OrderViewModel.WrappingOrder.TypeID()).toEqual(2);
+        });
+
+        it("should fail to create an order with no name, card number or security number", function () {
+            expect(OrderViewModel.validatePage()).toBeFalsy();
+        });
+
+        it("should fail to create an order with no card number or security number", function () {
+            OrderViewModel.Name("test name");
+            expect(OrderViewModel.validatePage()).toBeFalsy();
+        });
+
+        it("should fail to create an order with no security number", function () {
+            OrderViewModel.Name("test Name");
+            OrderViewModel.CardNumber("123456789");
+            expect(OrderViewModel.validatePage()).toBeFalsy();
+        });
+
+        it("should fail if card number is not a number", function () {
+            OrderViewModel.Name("test Name");
+            OrderViewModel.CardNumber("test number23");
+            OrderViewModel.SecurityNumber("23553");
+            expect(OrderViewModel.validatePage()).toBeFalsy();
+        });
+
+        it("should fail if security number is not a number", function () {
+            OrderViewModel.Name("test name");
+            OrderViewModel.CardNumber("5336366");
+            OrderViewModel.SecurityNumber("test number");
+            expect(OrderViewModel.validatePage()).toBeFalsy();
+        });
+
+        it("should successfully validate a valid order", function () {
+            OrderViewModel.Name("test name");
+            OrderViewModel.CardNumber("123456789");
+            OrderViewModel.SecurityNumber("123");
+            expect(OrderViewModel.validatePage()).toBeTruthy();
+        });
+
+        describe("Ordering Items for box", function () {
+            var result
+            beforeAll(function (done) {
+                OrderViewModel.Name("test name");
+                OrderViewModel.CardNumber("123456789");
+                OrderViewModel.SecurityNumber("123");
+                OrderViewModel.submitItemOrder(function (data, status, jqxhr) {
+                    result = data;
+                    done();
+                });
+            });
+
+            it("should succeed", function (done) {
+                expect(result).toBeTruthy();
+                done();
+            });
+        });
+
+        describe("Ordering wrapping for box", function () {
+            var result;
+            beforeAll(function (done) {
+                OrderViewModel.Name("test name");
+                OrderViewModel.CardNumber("123456789");
+                OrderViewModel.SecurityNumber("123");
+                OrderViewModel.submitWrappingOrder(function (data, status, jqxhr) {
+                    result = data;
+                    done();
+                });
+            });
+
+            it("should succeed", function (done) {
+                expect(result).toBeTruthy();
+                done();
+            });
+        });
+
+        describe("Ordering the box", function () {
+            beforeAll(function (done) {
+                OrderViewModel.Name("test name");
+                OrderViewModel.CardNumber("123456789");
+                OrderViewModel.SecurityNumber("123");
+                OrderViewModel.submitBoxOrder(function (data, status, jqxhr) {
+                    OrderViewModel.boxOrderSuccess(data, status, jqxhr);
+                    done();
+                });
+            });
+
+            it("should succeed", function (done) {
+                expect(OrderViewModel.orderSuccess()).toBeTruthy();
+                done();
+            });
         });
     });
 });

@@ -65,5 +65,5 @@
     </div>
     <!--/ko-->
 </div>
-<button class="buy" data-bind="css: {hidden: $root.SelectedItems().length == 0}, click: $root.saveBox">Create Box</button>
+<button class="buy" data-bind="css: {hidden: $root.SelectedItems().length == 0}, click: $root.saveBox($root.saveBoxSuccess)">Create Box</button>
 

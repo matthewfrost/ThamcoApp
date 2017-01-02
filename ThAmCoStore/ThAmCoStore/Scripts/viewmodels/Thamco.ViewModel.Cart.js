@@ -30,7 +30,7 @@
                 self.Items(null);
             }
 
-            self.Purchase = function (debug) {
+            self.Purchase = function (box, event, debug) {
                 debug = debug || false; 
                 if (self.pageValidation()) {
                     self.BoxOrder.Recipient(self.Recipient());
@@ -52,15 +52,14 @@
 
             self.pageValidation = function () {
                 var result;
-
                 result = true;
-                if (self.Recipient() != null && self.Message() != null) {
-                    if (self.Recipient().trim() == "" || self.Message().trim() == "") {
-                        result = false;
-                    }                    
+                if (self.Recipient() == null || self.Message() == null) {
+                    result = false;
                 }
                 else {
-                    result = false;
+                    if (self.Recipient().trim() == "" || self.Message().trim() == "") {
+                        result = false;
+                    }
                 }
 
                 return result;

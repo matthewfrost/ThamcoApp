@@ -48,7 +48,7 @@
                     type: 'DELETE',
                     success: options.success,
                     contentType: 'application/json',
-                    data: options.ID
+                    data: JSON.stringify(options.ID)
                 });
             }
         }
