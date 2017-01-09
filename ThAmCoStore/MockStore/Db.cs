@@ -58,7 +58,7 @@ namespace MockStore
         private void createBoxes()
         {
             Box b = new Box(1, "test 1", 5.99, "Description", false, true);
-            Box b2 = new Box(2, "test 2", 3.99, "Description", true, true);
+            Box b2 = new Box(2, "test 2", 3.99, "Description", true, false);
             Box b3 = new Box(3, "test 3", 9.99, "Description", true, true);
             Box b4 = new Box(4, "test 4", 7.99, "Description", true, true);
 

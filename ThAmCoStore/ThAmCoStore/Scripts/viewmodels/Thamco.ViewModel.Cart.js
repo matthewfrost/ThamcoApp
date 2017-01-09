@@ -53,11 +53,11 @@
             self.pageValidation = function () {
                 var result;
                 result = true;
-                if (self.Recipient() == null || self.Message() == null) {
+                if (self.Recipient() == null) {
                     result = false;
                 }
                 else {
-                    if (self.Recipient().trim() == "" || self.Message().trim() == "") {
+                    if (self.Recipient().trim() == "") {
                         result = false;
                     }
                 }

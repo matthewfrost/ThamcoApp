@@ -353,7 +353,7 @@ $(function () {
             CartViewModel.Recipient("");
             CartViewModel.Message("");
 
-            expect(CartViewModel.Purchase()).toBeFalsy();
+            expect(CartViewModel.Purchase(null, null, true)).toBeFalsy();
             done();
         });
 
@@ -361,15 +361,15 @@ $(function () {
             CartViewModel.Recipient("");
             CartViewModel.Message("Test message");
 
-            expect(CartViewModel.Purchase()).toBeFalsy();
+            expect(CartViewModel.Purchase(null, null, true)).toBeFalsy();
             done();
         });
 
-        it("should not allow purchasing with no message", function (done) {
+        it("should allow purchasing with no message", function (done) {
             CartViewModel.Recipient("Test recipient");
             CartViewModel.Message("");
 
-            expect(CartViewModel.Purchase()).toBeFalsy();
+            expect(CartViewModel.Purchase(null, null, true)).toBeTruthy();
             done();
         });
 
